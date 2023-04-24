@@ -10,22 +10,36 @@
 <body>
 <h1>Diagnostique</h1>
 <h3>Nom de l'entreprise</h3>
-<button onclick="hideAndDisplay('contenu1')">Axe 1</button>
+<button onclick="hideAndDisplay('contenu1')">Axe Compétences</button>
 <br>
 <div id="contenu1" style="display: none">
-    Le contenu 1
+    <h4>Excellence Technique/Communauté de pratiques</h4>
+    <p>Les questions</p>
+    <h4>Faire agile</h4>
+    <p>Les questions</p>
 </div>
 <br>
-<button onclick="hideAndDisplay('contenu2')">Axe 2</button>
+<button onclick="hideAndDisplay('contenu2')">Axe Réactivité</button>
 <br>
 <div id="contenu2" style="display: none">
-    Le contenu 2
+    <h4>Vélocité de réponse</h4>
+    <p>Les questions</p>
+    <h4>Environnements souples</h4>
+    <p>Les questions</p>
+    <h4>Défi environnemental</h4>
+    <p>Les questions</p>
+    <h4>Veille et benchmark</h4>
 </div>
 <br>
-<button onclick="hideAndDisplay('contenu3')">Axe 3</button>
+<button onclick="hideAndDisplay('contenu3')">Axe Numérique</button>
 <br>
 <div id="contenu3" style="display: none">
-    Le contenu 3
+    <h4>Business model</h4>
+    <p>Les questions</p>
+    <h4>Relation client</h4>
+    <p>Les questions</p>
+    <h4>Management</h4>
+    <p>Les questions</p>
 </div>
 <br>
 </body>
