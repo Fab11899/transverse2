@@ -53,9 +53,9 @@ class Grids extends DatabaseConnection
     }
     /*==READ==*/
     /*On récupère toutes les grilles*/
-    final public function readGrids()
+    final public function readGrids(): false|array
     {
-        $query = $this->db->prepare('SELECT * FROM grid');
+        $query = $this->db->prepare('SELECT * FROM grid where grid_deleted = 0');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
