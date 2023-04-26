@@ -1,8 +1,8 @@
 <?php
 //On affiche les erreurs
-/*ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);*/
+error_reporting(E_ALL);
 $gridSelected = $_GET['grid'] ?? false;
 if ($gridSelected) {
     /*On récupère les différentes pages*/
@@ -36,14 +36,19 @@ if ($gridSelected) {
     <!--Chaque axe à un bouton pour afficher son contenu-->
     <?php
     //On liste les axes
+    $answers = new GridAnswers();
     $axes = new Axes();
     $axesList = $axes->readAxes();
     //On affiche tous les axes
     foreach ($axesList as $axes) {
         $axe_id = $axes['axe_id'];
         $axe_name = $axes['axe_name'];
+        //On récupère le nombre de points de l'axe
+        $answers->setIdGrid($gridSelected);
+        $axePoints = $answers->readGridPointsByAxe($axe_id);
+        $axePoints = $axePoints['answer_points'];
         ?>
-        <button class="btn w-50 mx-auto btn-secondary text" onclick="hideAndDisplay(<?= $axe_id ?>)"><?= $axe_name ?></button>
+        <button class="btn w-50 mx-auto btn-secondary text" onclick="hideAndDisplay(<?= $axe_id ?>)"><?= $axe_name ?> - <?= $axePoints ?> Points</button>
         <!--On affiche le contenu de l'axe en question si on a cliqué sur le bouton-->
         <div id="<?= $axe_id ?>" style="display: none">
             <table class="table table-striped text-center align-middle w-100">
@@ -56,8 +61,12 @@ if ($gridSelected) {
                 foreach ($categorysList as $category) {
                     $category_id = $category['category_id'];
                     $category_name = $category['category_name'];
+                    //on récupère le nombre de points de la catégorie
+                    $answers->setIdGrid($gridSelected);
+                    $categoryPoints = $answers->readGridPointsByCategory($category_id);
+                    $categoryPoints = $categoryPoints['answer_points'];
                     ?>
-                    <tr class="table-dark w-100"><th><?= $category_name ?></th></tr>
+                    <tr class="table-dark w-100"><th><?= $category_name ?> - <?= $categoryPoints ?> Points</th></tr>
                     <?php
                     //On récupère les questions de la catégorie
                     $questions = new Questions();
@@ -72,7 +81,6 @@ if ($gridSelected) {
                         <tr><th><?= $question_name ?></th></tr>
                         <?php
                         //On récupère les réponses de la question pour la grille sélectionnée
-                        $answers = new GridAnswers();
                         $answers->setQuestionId($question_id);
                         $answers->setIdGrid($gridSelected);
                         $answersList = $answers->readAnswersByQuestionIdAndGridId();

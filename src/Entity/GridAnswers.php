@@ -9,7 +9,7 @@ class GridAnswers extends Grids
     /*=====PROPERTIES=====*/
     private int $gridQuestionAnswerId;
     private int $idGrid;
-    private int $idAxecategoryQuestionAnswer;
+    private int $idAxeCategoryQuestionAnswer;
     private int $idAxeCategoryQuestion;
     /*=====GETTERS=====*/
     final public function getGridQuestionAnswerId(): int
@@ -20,9 +20,9 @@ class GridAnswers extends Grids
     {
         return $this->idGrid;
     }
-    final public function getIdAxecategoryQuestionAnswer(): int
+    final public function getIdAxeCategoryQuestionAnswer(): int
     {
-        return $this->idAxecategoryQuestionAnswer;
+        return $this->idAxeCategoryQuestionAnswer;
     }
     final public function getQuestionId(): int
     {
@@ -37,9 +37,9 @@ class GridAnswers extends Grids
     {
         $this->idGrid = $id;
     }
-    final public function setIdAxecategoryQuestionAnswer(int $id): void
+    final public function setIdAxeCategoryQuestionAnswer(int $id): void
     {
-        $this->idAxecategoryQuestionAnswer = $id;
+        $this->idAxeCategoryQuestionAnswer = $id;
     }
     final public function setQuestionId(int $id): void
     {
@@ -51,7 +51,7 @@ class GridAnswers extends Grids
     {
         $query = $this->db->prepare('INSERT INTO grid_question_answer (id_grid, id_axe_category_question_answer) VALUES (:id_grid, :id_axe_category_question_answer)');
         $query->bindValue(':id_grid', $this->getIdGrid());
-        $query->bindValue(':id_axe_category_question_answer', $this->getIdAxecategoryQuestionAnswer());
+        $query->bindValue(':id_axe_category_question_answer', $this->getIdAxeCategoryQuestionAnswer());
         $query->execute();
     }
     /*==READ==*/
@@ -80,12 +80,39 @@ class GridAnswers extends Grids
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+    //On calcule le montant des points de la grille pour chaque catégorie
+    final public function readGridPointsByCategory(Int $categoryId): array
+    {
+        $query = $this->db->prepare('select sum(acqa.answer_point) as answer_points from grid_question_answer gqa
+                                            inner join axe_category_question_answer acqa on gqa.id_axe_category_question_answer = acqa.answer_id
+                                            inner join axe_category_question acq on acqa.id_axe_category_question = acq.question_id
+                                            where gqa.id_grid = :id_grid and acq.id_axe_category = :id_axe_category
+                                            group by acq.id_axe_category');
+        $query->bindValue(':id_grid', $this->getIdGrid(), PDO::PARAM_INT);
+        $query->bindValue(':id_axe_category', $categoryId, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    //on calcule le montant des points de la grille pour chaque axe
+    final public function readGridPointsByAxe(Int $axeId): array
+    {
+        $query = $this->db->prepare('select sum(acqa.answer_point) as answer_points from grid_question_answer gqa
+                                            inner join axe_category_question_answer acqa on gqa.id_axe_category_question_answer = acqa.answer_id
+                                            inner join axe_category_question acq on acqa.id_axe_category_question = acq.question_id
+                                            inner join axe_category ac on acq.id_axe_category = ac.category_id
+                                            where gqa.id_grid = :id_grid and ac.id_axe = :id_axe
+                                            group by ac.id_axe');
+        $query->bindValue(':id_grid', $this->getIdGrid(), PDO::PARAM_INT);
+        $query->bindValue(':id_axe', $axeId, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
     /*==UPDATE==*/
     final public function updateGridAnswers(): void
     {
         $query = $this->db->prepare('UPDATE grid_question_answer SET id_grid = :id_grid, id_axe_category_question_answer = :id_axe_category_question_answer WHERE grid_question_answer_id = :id');
         $query->bindValue(':id_grid', $this->getIdGrid());
-        $query->bindValue(':id_axe_category_question_answer', $this->getIdAxecategoryQuestionAnswer());
+        $query->bindValue(':id_axe_category_question_answer', $this->getIdAxeCategoryQuestionAnswer());
         $query->bindValue(':id', $this->getGridQuestionAnswerId());
         $query->execute();
     }

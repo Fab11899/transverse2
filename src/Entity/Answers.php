@@ -63,12 +63,11 @@ class Answers extends Questions
     }
     final public function readAnswersByQuestionId(): array
     {
-        $query = $this->db->prepare('SELECT * FROM axe_category_question_answer WHERE id_axe_category_question = :id');
+        $query = $this->db->prepare('SELECT * FROM axe_category_question_answer WHERE id_axe_category_question = :id order by answer_point');
         $query->bindValue(':id', $this->getQuestionId(), PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
-
     /*==UPDATE==*/
     final public function updateAnswers(string $name, string $point): void
     {

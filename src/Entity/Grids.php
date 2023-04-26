@@ -68,6 +68,12 @@ class Grids extends DatabaseConnection
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+    final public function readGridsByName() {
+        $query = $this->db->prepare('SELECT * FROM grid WHERE grid_name = :name');
+        $query->bindValue(':name', $this->getGridName());
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
     /*==UPDATE==*/
     /*On modifie une grille par son ID*/
     final public function updateGridsById()
