@@ -56,6 +56,7 @@ foreach ($axesList as $axe) {
             $answers->setQuestionId($questionId);
             $answersList = $answers->readAnswersByQuestionId();
             ?>
+            <label for="answer<?= $questionId ?>">Réponse :</label>
             <select name="answer<?= $questionId ?>" id="answer<?= $questionId ?>">
                 <?php
                 foreach ($answersList as $answer) {
