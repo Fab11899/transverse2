@@ -39,12 +39,33 @@
 
 <?php
 
-// Btn retour
-echo '<button onclick="window.history.back()">Retour</button>';
-// retour arrière dans l'historique du nav
+// Btn retour 
+echo '<button class="retour-btn" onclick="goBack()">Retour</button>';
+
+// retour arriere bouton retour
 echo '<script>';
 echo 'function goBack() {';
 echo 'window.history.back();';
 echo '}';
 echo '</script>';
 ?>
+
+<style>
+.retour-btn {
+  background-color: #808080;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.retour-btn:hover {
+  background-color: #000000;
+
+}
+</style>
