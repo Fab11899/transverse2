@@ -51,7 +51,7 @@ if (isset($_POST['newGrid'])) {
 <!--On crée le formulaire-->
 <form method="post">
     <label for="gridName">Nom de la grille</label>
-    <input type="text" name="gridName" id="gridName">
+    <input type="text" name="gridName" id="gridName" required>
     <?php
     //On commence par récupérer les axes
     $axes = new Axes();
