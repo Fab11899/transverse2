@@ -1,9 +1,8 @@
 <?php
 //On affiche les erreurs
-ini_set('display_errors', 1);
+/*ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-var_dump($_POST);
+error_reporting(E_ALL);*/
 /*On récupère les grilles*/
 require_once ('src/Entity/DatabaseConnection.php');
 require_once ('src/Entity/Axes.php');
