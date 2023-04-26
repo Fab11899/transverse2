@@ -7,12 +7,13 @@ error_reporting(E_ALL);
 $username = 'usr';
 $password = 'user';
 $host = '172.16.47.120';
-$dbname = 'transverse';
-$db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-//on vérifie que la bdd est bien connectée
-if ($db) {
-    echo "La base de données est connectée";
-} else {
-    echo "La base de données n'est pas connectée";
+//$username = 'root';
+//$password = 'root';
+//$host = 'localhost';
+$database = 'transverse';
+$con = new mysqli($host, $username, $password, $database);
+if($con->connect_errno){
+    die('Error ' . $this->con->connect_error);
 }
+echo 'Connected successfully!';
 
