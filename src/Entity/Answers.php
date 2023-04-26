@@ -68,6 +68,7 @@ class Answers extends Questions
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+
     /*==UPDATE==*/
     final public function updateAnswers(string $name, string $point): void
     {
