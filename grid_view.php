@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);*/
 $gridSelected = $_GET['grid'] ?? false;
 if ($gridSelected) {
-    /*On récupère les grilles*/
+    /*On récupère les différentes pages*/
     require_once ('src/Entity/DatabaseConnection.php');
     require_once ('src/Entity/Axes.php');
     require_once ('src/Entity/Categorys.php');
