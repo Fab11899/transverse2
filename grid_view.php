@@ -67,6 +67,8 @@ if ($gridSelected) {
         $axePoints = $answers->readGridPointsByAxe($axe_id);
         $axePoints = $axePoints['answer_points'];
         ?>
+        <!--On fait une div cachée pour avoir le nombre de points de l'axe-->
+        <div id="axe<?= $axe_id ?>" style="display: none"><?= $axePoints ?></div>
         <button class="btn w-50 mx-auto btn-secondary text" onclick="hideAndDisplay(<?= $axe_id ?>)"><?= $axe_name ?> - <?= $axePoints ?> Points</button>
         <!--On affiche le contenu de l'axe en question si on a cliqué sur le bouton-->
         <div id="<?= $axe_id ?>" style="display: none">
@@ -119,11 +121,41 @@ if ($gridSelected) {
         <?php
     }
     ?>
+    <div style="width: 500px; margin: auto">
+        <canvas id="myChart"></canvas>
+    </div>
     <!--Btn retour-->
     <button onclick="window.history.back()">Retour</button>
     </body>
     </html>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        //On récupère le contenu des divs cachées
+        const reactivite = document.getElementById('axe1').innerHTML;
+        const competences = document.getElementById('axe2').innerHTML;
+        const numerique = document.getElementById('axe3').innerHTML;
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Axe réactivité', 'Axe compétences', 'Axe numérique'],
+                datasets: [{
+                    label: 'Score',
+                    data: [reactivite, competences, numerique],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        suggestedMin: 0,
+                        suggestedMax: 60
+                    }
+                },
+            }
+        });
+    </script>
     <script>
         <?php
         require_once ('assets/js/indexFunctions.js');
