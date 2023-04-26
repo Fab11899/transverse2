@@ -1,4 +1,37 @@
 <?php
+<<<<<<< HEAD
+
+// Btn retour 
+echo '<button class="retour-btn" onclick="goBack()">Retour</button>';
+
+// retour arriere bouton retour
+echo '<script>';
+echo 'function goBack() {';
+echo 'window.history.back();';
+echo '}';
+echo '</script>';
+?>
+
+<style>
+.retour-btn {
+  background-color: #808080;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.retour-btn:hover {
+  background-color: #000000;
+
+}
+</style>
+=======
 //On affiche les erreurs
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -114,3 +147,4 @@ if ($gridSelected) {
 } else {
 header('Location: index.php');
 }
+>>>>>>> 20cd456226dee70c1907059455178f8b512d54d0
