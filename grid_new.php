@@ -62,6 +62,7 @@ if (isset($_POST['newGrid'])) {
     }
 </style>
 <body>
+<div style="font-size: 10px; margin: auto">Version 1.1.3</div>
 <div class="container">
 <h1 style="text-align: center; font-family: Arial, sans-serif;">Nouvelle grille</h1>  
 </div>

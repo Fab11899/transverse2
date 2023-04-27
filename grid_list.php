@@ -70,6 +70,7 @@ if(isset($_GET['q'])) {
     }
 </style>
 <body>
+<div style="font-size: 10px; margin: auto">Version 1.1.3</div>
 <h1 class="text-center">Grid list</h1>
 <form action="" method="get" >
     <label for="search">Recherche :</label>

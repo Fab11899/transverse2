@@ -59,6 +59,7 @@ if ($gridSelected) {
         }
     </style>
     <body class="container d-flex flex-column align-middle text-center">
+    <div style="font-size: 10px; margin: auto">Version 1.1.3</div>
     <div class="fs-1 text">Diagnostique</div>
     <div class="fs-2 text"><?= $gridName ?></div>
     <!--Chaque axe à un bouton pour afficher son contenu-->
