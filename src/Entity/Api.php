@@ -159,10 +159,10 @@ class Api extends GridAnswers
                     $answers->setQuestionId($questionId);
                     $answersList = $answers->readAnswersByQuestionId();
                     //On boucle sur les réponses
-                    foreach ($answersList as $anwser) {
-                        $answerId = (int)$anwser['answer_id'];
-                        $answerName = $anwser['answer_name'];
-                        $answerPoint = (int)$anwser['answer_point'];
+                    foreach ($answersList as $answer) {
+                        $answerId = (int)$answer['answer_id'];
+                        $answerName = $answer['answer_name'];
+                        $answerPoint = (int)$answer['answer_point'];
                         //On ajoute l'ID et le nom au tableau
                         $response[$axeId]['categories'][$categoryId]['questions'][$questionId]['answers'][$answerId] = [
                             'answer_id' => $answerId,

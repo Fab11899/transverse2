@@ -68,4 +68,6 @@ class Axes extends DatabaseConnection
         $query->bindValue(':id', $this->getAxeId(), PDO::PARAM_INT);
         $query->execute();
     }
+    //On fait une fonction pour modifier le nom
+
 }

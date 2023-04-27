@@ -143,7 +143,13 @@ if ($gridSelected) {
                 datasets: [{
                     label: 'Score',
                     data: [reactivite, competences, numerique],
-                    borderWidth: 2
+                    borderWidth: 2,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
                 }]
             },
             options: {
