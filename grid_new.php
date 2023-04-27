@@ -44,14 +44,21 @@ if (isset($_POST['newGrid'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>new grid</title>
+    <link href= "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"></link>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <title>New grid</title>
 </head>
 <body>
 
-<h1>Nouvelle grille</h1>
+<div class="container">
+<h1 style="text-align: center; font-family: Arial, sans-serif;">Nouvelle grille</h1>  
+</div>
+
+
 <!--On crée le formulaire-->
-<form method="post">
-    <label for="gridName">Nom de la grille</label>
+<form method="post" >
+    <label for="gridName" >Nom de la grille</label>
+    
     <input type="text" name="gridName" id="gridName" required>
     <?php
 
@@ -117,7 +124,19 @@ if (isset($_POST['newGrid'])) {
         }
     }
     ?>
-    <button name="newGrid">Créer la grille</button>
+    <button name="newGrid" style="; color: white; border-radius: 5px;">Créer la grille</button>
+    <style>
+        button{
+  background-color: grey;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right; 
+  margin-right: 20px;
+        }
     <?php
 exit;
 ?>

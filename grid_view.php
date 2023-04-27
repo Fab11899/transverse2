@@ -68,6 +68,7 @@ if ($gridSelected) {
         $axePoints = $axePoints ? (int)$axePoints['answer_points'] : 0 ;
         ?>
         <button class="btn w-50 mx-auto btn-secondary text" onclick="hideAndDisplay(<?= $axe_id ?>)"><?= $axe_name ?> - <?= $axePoints ?> Points</button>
+        
         <!--On affiche le contenu de l'axe en question si on a cliqué sur le bouton-->
         <div id="<?= $axe_id ?>" style="display: none">
             <table class="table table-striped text-center align-middle w-100">
