@@ -48,24 +48,31 @@ if (isset($_POST['newGrid'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <title>New grid</title>
 </head>
+<style>
+    button{
+        background-color: grey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        float: right;
+        margin-right: 20px;
+    }
+</style>
 <body>
-
 <div class="container">
 <h1 style="text-align: center; font-family: Arial, sans-serif;">Nouvelle grille</h1>  
 </div>
-
-
 <!--On crée le formulaire-->
 <form method="post" >
     <label for="gridName" >Nom de la grille</label>
-    
     <input type="text" name="gridName" id="gridName" required>
     <?php
-
     //On commence par récupérer les axes
     $axes = new Axes();
     $axesList = $axes->readAxes();
-
     //On affiche les axes
     foreach ($axesList as $axe) {
         $axeName = $axe['axe_name'];
@@ -73,12 +80,10 @@ if (isset($_POST['newGrid'])) {
         ?>
         <h2><?= $axeName ?></h2>
         <?php
-
         //On récupère les catégories de l'axe
         $categorys = new Categorys();
         $categorys->setAxeId($axeId);
         $categorysList = $categorys->readCategorysByAxeId();
-
         //On affiche les catégories`
         foreach ($categorysList as $category) {
             $categoryName = $category['category_name'];
@@ -86,12 +91,10 @@ if (isset($_POST['newGrid'])) {
             ?>
             <h3><?= $categoryName ?></h3>
             <?php
-
             //On récupère les questions de la catégorie
             $questions = new Questions();
             $questions->setCategoryId($categoryId);
             $questionsList = $questions->readQuestionsByCategoryId();
-
             //On affiche les questions
             foreach ($questionsList as $question) {
                 $questionName = $question['question_name'];
@@ -99,7 +102,6 @@ if (isset($_POST['newGrid'])) {
                 ?>
                 <h4><?= $questionName ?></h4>
                 <?php
-
                 //On fait un select avec les réponses possibles de la question
                 $answers = new Answers();
                 $answers->setQuestionId($questionId);
@@ -117,28 +119,11 @@ if (isset($_POST['newGrid'])) {
                     }
                     ?>
                 </select>
-
-
                 <?php
             }
         }
     }
     ?>
     <button name="newGrid" style="; color: white; border-radius: 5px;">Créer la grille</button>
-    <style>
-        button{
-  background-color: grey;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  float: right; 
-  margin-right: 20px;
-        }
-    <?php
-exit;
-?>
 </body>
 </html>
