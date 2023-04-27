@@ -47,17 +47,18 @@ if (isset($_POST['newGrid'])) {
     <link href= "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"></link>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <title>New grid</title>
+    
 </head>
 <body>
 
 <div class="container">
-<h1 style="text-align: center; font-family: Arial, sans-serif;">Nouvelle grille</h1>  
+<h1 style="text-align: center";>Nouvelle grille</h1>  
 </div>
 
 
 <!--On crée le formulaire-->
 <form method="post" >
-    <label for="gridName" >Nom de la grille</label>
+    <label for="gridName" style="text-align: center" >Nom de la grille</label>
     
     <input type="text" name="gridName" id="gridName" required>
     <?php
@@ -126,6 +127,54 @@ if (isset($_POST['newGrid'])) {
     ?>
     <button name="newGrid" style="; color: white; border-radius: 5px;">Créer la grille</button>
     <style>
+
+h1{
+    font-family: Arial, sans-serif;
+    text-align: center;
+	margin-top: 40px;
+    text-shadow: 2px 2px #ccc;
+    
+}
+
+
+h2{
+    font-family: Arial, sans-serif;
+	margin-top: 40px; font-family: Arial, sans-serif; /* police de caractères */
+  font-size: 24px; /* taille de police */
+  font-weight: bold; /* épaisseur de police */
+  color: #333; /* couleur du texte */
+  margin-top: 60px; /* espacement en haut */
+  margin-bottom: 60px; /* espacement en bas */
+  text-transform: uppercase; /* transformation de texte en majuscules */
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  
+}
+
+h3{
+    font-family: Arial, sans-serif;
+	margin-top: 20px;
+  color: #333;
+  font-size: 24px;
+  text-decoration: underline;
+
+
+    
+}
+
+input{
+    text-align: center"
+}
+
+
+form{
+    margin-left: 70px;
+}
+
+body{
+    backgroundColor: grey;
+}
+
         button{
   background-color: grey;
   color: white;
@@ -136,6 +185,7 @@ if (isset($_POST['newGrid'])) {
   cursor: pointer;
   float: right; 
   margin-right: 20px;
+  
         }
     <?php
 exit;

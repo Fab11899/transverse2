@@ -50,7 +50,8 @@ if ($gridSelected) {
         }
     </style>
     <body class="container d-flex flex-column align-middle text-center">
-    <div class="fs-1 text">Diagnostique</div>
+    <div class="fs-1 text" style="    text-shadow: 2px 2px #ccc;
+">Diagnostique</div>
     <div class="fs-2 text"><?= $gridName ?></div>
     <!--Chaque axe à un bouton pour afficher son contenu-->
     <?php
@@ -128,6 +129,21 @@ if ($gridSelected) {
     <!--Btn retour-->
     <form action="grid_list.php">
         <button>Retour</button>
+        <style>
+
+        button{ 
+    
+  
+            display: inline-block;
+  padding: 10px 20px;
+  background-color: #ccc;
+  color: #fff;
+  text-decoration: none;
+  line-height: 20px;
+  
+  
+        }
+  </style>
     </form>
 
     </body>
