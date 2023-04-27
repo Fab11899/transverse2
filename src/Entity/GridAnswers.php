@@ -69,7 +69,7 @@ class GridAnswers extends Grids
         return $query->fetch(PDO::FETCH_ASSOC);
     }
     //On récupère le nom de la réponse par rapport à l'ID de la grille et l'ID de la question
-    final public function readAnswersByQuestionIdAndGridId(): array
+    final public function readAnswersByQuestionIdAndGridId(): array|bool
     {
         $query = $this->db->prepare('SELECT axe_category_question_answer.answer_name FROM grid_question_answer 
                                             INNER JOIN axe_category_question_answer ON grid_question_answer.id_axe_category_question_answer = axe_category_question_answer.answer_id 
@@ -81,7 +81,7 @@ class GridAnswers extends Grids
         return $query->fetch(PDO::FETCH_ASSOC);
     }
     //On calcule le montant des points de la grille pour chaque catégorie
-    final public function readGridPointsByCategory(Int $categoryId): array
+    final public function readGridPointsByCategory(Int $categoryId): array|bool
     {
         $query = $this->db->prepare('select sum(acqa.answer_point) as answer_points from grid_question_answer gqa
                                             inner join axe_category_question_answer acqa on gqa.id_axe_category_question_answer = acqa.answer_id
@@ -94,7 +94,7 @@ class GridAnswers extends Grids
         return $query->fetch(PDO::FETCH_ASSOC);
     }
     //on calcule le montant des points de la grille pour chaque axe
-    final public function readGridPointsByAxe(Int $axeId): array
+    final public function readGridPointsByAxe(Int $axeId): array|bool
     {
         $query = $this->db->prepare('select sum(acqa.answer_point) as answer_points from grid_question_answer gqa
                                             inner join axe_category_question_answer acqa on gqa.id_axe_category_question_answer = acqa.answer_id

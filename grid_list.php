@@ -81,6 +81,10 @@ if(isset($_GET['q'])) {
         ?>
     </tbody>
 </table>
+	<a href="grid_new.php">Créer nouvelle liste</a>
+    <?php
+exit;
+?>
 
 </body>
 </html>

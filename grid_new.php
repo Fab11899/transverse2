@@ -47,15 +47,18 @@ if (isset($_POST['newGrid'])) {
     <title>new grid</title>
 </head>
 <body>
+
 <h1>Nouvelle grille</h1>
 <!--On crée le formulaire-->
 <form method="post">
     <label for="gridName">Nom de la grille</label>
     <input type="text" name="gridName" id="gridName" required>
     <?php
+
     //On commence par récupérer les axes
     $axes = new Axes();
     $axesList = $axes->readAxes();
+
     //On affiche les axes
     foreach ($axesList as $axe) {
         $axeName = $axe['axe_name'];
@@ -63,10 +66,12 @@ if (isset($_POST['newGrid'])) {
         ?>
         <h2><?= $axeName ?></h2>
         <?php
+
         //On récupère les catégories de l'axe
         $categorys = new Categorys();
         $categorys->setAxeId($axeId);
         $categorysList = $categorys->readCategorysByAxeId();
+
         //On affiche les catégories`
         foreach ($categorysList as $category) {
             $categoryName = $category['category_name'];
@@ -74,10 +79,12 @@ if (isset($_POST['newGrid'])) {
             ?>
             <h3><?= $categoryName ?></h3>
             <?php
+
             //On récupère les questions de la catégorie
             $questions = new Questions();
             $questions->setCategoryId($categoryId);
             $questionsList = $questions->readQuestionsByCategoryId();
+
             //On affiche les questions
             foreach ($questionsList as $question) {
                 $questionName = $question['question_name'];
@@ -85,6 +92,7 @@ if (isset($_POST['newGrid'])) {
                 ?>
                 <h4><?= $questionName ?></h4>
                 <?php
+
                 //On fait un select avec les réponses possibles de la question
                 $answers = new Answers();
                 $answers->setQuestionId($questionId);
@@ -102,13 +110,16 @@ if (isset($_POST['newGrid'])) {
                     }
                     ?>
                 </select>
+
+
                 <?php
             }
         }
     }
     ?>
-    <br>
     <button name="newGrid">Créer la grille</button>
-</form>
+    <?php
+exit;
+?>
 </body>
 </html>

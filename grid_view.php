@@ -65,7 +65,7 @@ if ($gridSelected) {
         //On récupère le nombre de points de l'axe
         $answers->setIdGrid($gridSelected);
         $axePoints = $answers->readGridPointsByAxe($axe_id);
-        $axePoints = $axePoints['answer_points'];
+        $axePoints = $axePoints ? (int)$axePoints['answer_points'] : 0 ;
         ?>
         <button class="btn w-50 mx-auto btn-secondary text" onclick="hideAndDisplay(<?= $axe_id ?>)"><?= $axe_name ?> - <?= $axePoints ?> Points</button>
         <!--On affiche le contenu de l'axe en question si on a cliqué sur le bouton-->
@@ -83,7 +83,7 @@ if ($gridSelected) {
                     //on récupère le nombre de points de la catégorie
                     $answers->setIdGrid($gridSelected);
                     $categoryPoints = $answers->readGridPointsByCategory($category_id);
-                    $categoryPoints = $categoryPoints['answer_points'];
+                    $categoryPoints = $categoryPoints ? $categoryPoints['answer_points'] : 0;
                     ?>
                     <tr class="table-dark w-100"><th><?= $category_name ?> - <?= $categoryPoints ?> Points</th></tr>
                     <?php
@@ -120,16 +120,19 @@ if ($gridSelected) {
     }
     ?>
     <!--Btn retour-->
-    <button onclick="window.history.back()">Retour</button>
+    <form action="grid_list.php">
+        <button>Retour</button>
+    </form>
+
     </body>
     </html>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
-        <?php
-        require_once ('assets/js/indexFunctions.js');
-        ?>
+        <?php require_once ('assets/js/indexFunctions.js'); ?>
     </script>
     <?php
 } else {
-    header('Location: index.php');
+    header('Location: grid_list.php');
 }
+exit;
