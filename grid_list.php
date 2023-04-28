@@ -23,8 +23,8 @@ if(isset($_GET['q'])) {
 <head>
     <meta charset="UTF-8">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <title>Grid list</title>
 </head>
 <style>
@@ -75,21 +75,29 @@ form{
         background-color: #f1f1f1;
         width: 50%;
     }
+    .button {
+        background-color: grey;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 </style>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-
-
+<div style="font-size: 10px; margin: auto">Version 1.1.4</div>
 <h1 class="text-center">Grid list</h1>
-
 <form action="" method="get" >
 <!--<label for="search">Recherche :</label>-->
     <input type="text" id="search" name="q" placeholder="Recherche..." value="<?= $q ?>">
-    <button type="submit">Rechercher</button>
-	
+    <button type="submit" class="button">Rechercher</button>
 </form>
+<button class="button"><a href="grid_new.php" style="color: white; text-decoration: none;">Créer nouvelle liste</a></button>
 <table>
     <thead>
         <tr>
@@ -114,25 +122,5 @@ form{
 		
     </tbody>
 </table>
-<button class="button"><a href="grid_new.php" style="color: white; text-decoration: none;">Créer nouvelle liste</a></button>
-<style>
-.button {
-  background-color: grey;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-    <?php
-exit;
-?>
-
 </body>
 </html>

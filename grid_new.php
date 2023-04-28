@@ -49,24 +49,73 @@ if (isset($_POST['newGrid'])) {
     <title>New grid</title>
     
 </head>
-<body>
+<style>
+    button{
+        background-color: grey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        float: right;
+        margin-right: 20px;
+    }
+    h1{
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 40px;
+        text-shadow: 2px 2px #ccc;
+        
+    }
 
+
+    h2{
+        font-family: Arial, sans-serif;
+        margin-top: 40px; font-family: Arial, sans-serif; /* police de caractères */
+    font-size: 24px; /* taille de police */
+    font-weight: bold; /* épaisseur de police */
+    color: #333; /* couleur du texte */
+    margin-top: 60px; /* espacement en haut */
+    margin-bottom: 60px; /* espacement en bas */
+    text-transform: uppercase; /* transformation de texte en majuscules */
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    
+    }
+
+    h3{
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+    color: #333;
+    font-size: 24px;
+    text-decoration: underline;
+    }
+
+    input{
+        text-align: center"
+    }
+    form{
+        margin-left: 70px;
+    }
+
+    body{
+        backgroundColor: grey;
+    }
+</style>
+<body>
+<div style="font-size: 10px; margin: auto">Version 1.1.4</div>
 <div class="container">
 <h1 style="text-align: center";>Nouvelle grille</h1>  
 </div>
-
-
 <!--On crée le formulaire-->
 <form method="post" >
     <label for="gridName" style="text-align: center" >Nom de la grille</label>
-    
     <input type="text" name="gridName" id="gridName" required>
     <?php
-
     //On commence par récupérer les axes
     $axes = new Axes();
     $axesList = $axes->readAxes();
-
     //On affiche les axes
     foreach ($axesList as $axe) {
         $axeName = $axe['axe_name'];
@@ -74,12 +123,10 @@ if (isset($_POST['newGrid'])) {
         ?>
         <h2><?= $axeName ?></h2>
         <?php
-
         //On récupère les catégories de l'axe
         $categorys = new Categorys();
         $categorys->setAxeId($axeId);
         $categorysList = $categorys->readCategorysByAxeId();
-
         //On affiche les catégories`
         foreach ($categorysList as $category) {
             $categoryName = $category['category_name'];
@@ -87,12 +134,10 @@ if (isset($_POST['newGrid'])) {
             ?>
             <h3><?= $categoryName ?></h3>
             <?php
-
             //On récupère les questions de la catégorie
             $questions = new Questions();
             $questions->setCategoryId($categoryId);
             $questionsList = $questions->readQuestionsByCategoryId();
-
             //On affiche les questions
             foreach ($questionsList as $question) {
                 $questionName = $question['question_name'];
@@ -100,7 +145,6 @@ if (isset($_POST['newGrid'])) {
                 ?>
                 <h4><?= $questionName ?></h4>
                 <?php
-
                 //On fait un select avec les réponses possibles de la question
                 $answers = new Answers();
                 $answers->setQuestionId($questionId);
@@ -118,75 +162,12 @@ if (isset($_POST['newGrid'])) {
                     }
                     ?>
                 </select>
-
-
                 <?php
             }
         }
     }
     ?>
     <button name="newGrid" style="; color: white; border-radius: 5px;">Créer la grille</button>
-    <style>
-
-h1{
-    font-family: Arial, sans-serif;
-    text-align: center;
-	margin-top: 40px;
-    text-shadow: 2px 2px #ccc;
-    
-}
-
-
-h2{
-    font-family: Arial, sans-serif;
-	margin-top: 40px; font-family: Arial, sans-serif; /* police de caractères */
-  font-size: 24px; /* taille de police */
-  font-weight: bold; /* épaisseur de police */
-  color: #333; /* couleur du texte */
-  margin-top: 60px; /* espacement en haut */
-  margin-bottom: 60px; /* espacement en bas */
-  text-transform: uppercase; /* transformation de texte en majuscules */
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  
-}
-
-h3{
-    font-family: Arial, sans-serif;
-	margin-top: 20px;
-  color: #333;
-  font-size: 24px;
-  text-decoration: underline;
-
-
-    
-}
-
-input{
-    text-align: center"
-}
-
-
-form{
-    margin-left: 70px;
-}
-
-body{
-    backgroundColor: grey;
-}
-
-        button{
-  background-color: grey;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  float: right; 
-  margin-right: 20px;
-  
-        }
     <?php
 exit;
 ?>

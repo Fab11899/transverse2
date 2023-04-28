@@ -43,15 +43,24 @@ if ($gridSelected) {
           border-radius: 5px;
           cursor: pointer;
         }
-
         .retour-btn:hover {
           background-color: #000000;
 
         }
+        button{
+            background-color: grey;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
     </style>
     <body class="container d-flex flex-column align-middle text-center">
-    <div class="fs-1 text" style="    text-shadow: 2px 2px #ccc;
-">Diagnostique</div>
+    <div style="font-size: 10px; margin: auto">Version 1.1.4</div>
+    <div class="fs-1 text" style="text-shadow: 2px 2px #ccc;">Diagnostique</div>
     <div class="fs-2 text"><?= $gridName ?></div>
     <!--Chaque axe à un bouton pour afficher son contenu-->
     <?php
@@ -145,13 +154,8 @@ if ($gridSelected) {
         }
   </style>
     </form>
-
     </body>
     </html>
-<<<<<<< HEAD
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-=======
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -186,7 +190,6 @@ if ($gridSelected) {
             }
         });
     </script>
->>>>>>> 34f0a3619cba6420b5ba10c978f1e042fbd2ed1b
     <script>
         <?php require_once ('assets/js/indexFunctions.js'); ?>
     </script>
